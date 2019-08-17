@@ -1,7 +1,7 @@
 <template>
 
     <ol class="game-data" v-if="gameData && gameData.length > 0">
-        <li v-for="game in gameData">
+        <li v-for="game in gameData" :key="game.id">
             <p><strong>Winner: </strong><span class="game-data__winner">{{ game.winner }}</span></p>
             <p><strong>Date: </strong>{{ game.date }}</p>
             <p><strong>See details: </strong><router-link :to="`/games/${game.id}`">Link</router-link></p>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import { mapGetters, mapActions } from 'vuex';
+    import { mapGetters } from 'vuex';
 
     export default {
         name: "GameData",

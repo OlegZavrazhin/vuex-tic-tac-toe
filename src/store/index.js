@@ -55,14 +55,12 @@ const actions = {
     /**
      * Set value to the store and convey turn
      * @param commit
-     * @param store
-     * @param dispatch
      * @param turn
      * @param rowIndex
      * @param cellIndex
      * @returns {Promise<any>}
      */
-    changeTurnAndValue({commit, store, dispatch}, {turn, rowIndex, cellIndex}) {
+    changeTurnAndValue({commit}, {turn, rowIndex, cellIndex}) {
 
         return new Promise((resolve) => {
 
@@ -84,7 +82,7 @@ const actions = {
      * @param rowIndex
      * @param cellIndex
      */
-    checkWinner({commit, state, dispatch}, {turn, rowIndex, cellIndex}) {
+    checkWinner({commit, state}, {turn, rowIndex, cellIndex}) {
 
         const tableSize = 3;
 
