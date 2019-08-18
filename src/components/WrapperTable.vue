@@ -128,4 +128,20 @@
         position: relative;
     }
 
+    .wrapper__btn {
+        white-space: nowrap;
+    }
+
+    .wrapper__btn_first {
+        margin-bottom: 1.5rem;
+    }
+
+    @media all and (min-width: 64em) {
+
+        .wrapper__btn_first {
+            margin-bottom: 0;
+        }
+
+    }
+
 </style>

@@ -121,12 +121,17 @@ const actions = {
 
         let circleWin = arrayWithStates.indexOf(-3);
         let crossWin = arrayWithStates.indexOf(3);
+        let noWinner = arrayWithStates.indexOf(0);
 
         if ((circleWin > -1) || (crossWin > -1)) {
             commit('setDate');
             commit('setDoneTrue');
             let winner = circleWin > -1 ? 'circle' : 'cross';
             commit('setWinner', winner);
+        } else if (noWinner === -1) {
+            commit('setDate');
+            commit('setDoneTrue');
+            commit('setWinner', 'No winner');
         }
 
 
