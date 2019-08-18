@@ -128,11 +128,11 @@ const actions = {
             commit('setDoneTrue');
             let winner = circleWin > -1 ? 'circle' : 'cross';
             commit('setWinner', winner);
-        } else if (noWinner === -1) {
+        } /*else if (noWinner === -1) {
             commit('setDate');
             commit('setDoneTrue');
             commit('setWinner', 'No winner');
-        }
+        }*/
 
 
 
