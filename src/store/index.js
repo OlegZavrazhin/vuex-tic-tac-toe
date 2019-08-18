@@ -48,7 +48,21 @@ const getters = {
      * @param state
      * @returns {getters.gameData|(function(*))|Array}
      */
-    gameData: (state) => state.gameData
+    gameData: (state) => state.gameData,
+    /**
+     * Check for cells filled
+     * @param state
+     * @returns {boolean}
+     */
+    allCellsFilled: (state) => {
+        let filled;
+        filled = state.currentGame.rows.find(row =>
+            row.cells.find(cell =>
+                cell.value === null
+            )
+        );
+        return !filled;
+    }
 };
 
 const actions = {
@@ -82,7 +96,7 @@ const actions = {
      * @param rowIndex
      * @param cellIndex
      */
-    checkWinner({commit, state}, {turn, rowIndex, cellIndex}) {
+    checkWinner({commit, state, getters}, {turn, rowIndex, cellIndex}) {
 
         const tableSize = 3;
 
@@ -121,20 +135,18 @@ const actions = {
 
         let circleWin = arrayWithStates.indexOf(-3);
         let crossWin = arrayWithStates.indexOf(3);
-        let noWinner = arrayWithStates.indexOf(0);
+        let noWinner = getters['allCellsFilled'];
 
         if ((circleWin > -1) || (crossWin > -1)) {
             commit('setDate');
             commit('setDoneTrue');
             let winner = circleWin > -1 ? 'circle' : 'cross';
             commit('setWinner', winner);
-        } /*else if (noWinner === -1) {
+        } else if (noWinner) {
             commit('setDate');
             commit('setDoneTrue');
             commit('setWinner', 'No winner');
-        }*/
-
-
+        }
 
     },
     /**
