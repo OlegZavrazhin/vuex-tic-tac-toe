@@ -259,7 +259,7 @@ const mutations = {
      */
     setDate: (state) => {
 
-        Vue.set(state.currentGame, 'date', new Date());
+        Vue.set(state.currentGame, 'date', new Date().toString());
 
     },
     /**
